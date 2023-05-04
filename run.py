@@ -1,27 +1,29 @@
 from random import randint
-
 import sys
 
-#Computer board 
-COMPUTER_BOARD = [[" "] *8 for i in range(8)]
+# #Computer board 
+# COMPUTER_BOARD = [[" "] * 8 for i in range(8)]
 
 
-#Player board
-PLAYER_BOARD = [[" "] *8 for i in range(8)]
+# #Player board
+# PLAYER_BOARD = [[" "] * 8 for i in range(8)]
 
 
-#board
-coordinates = {
-    'A':0,
-    'B':1,
-    'C':2,
-    'D':3,
-    'E':4,
-    'F':5,
-    'G':6,
-    'H':7,
-}
+# #board
+# coordinates = {
+#     'A':0,
+#     'B':1,
+#     'C':2,
+#     'D':3,
+#     'E':4,
+#     'F':5,
+#     'G':6,
+#     'H':7,
+# }
 
+board = []
+for i in range(8):
+    board.append(["O"] * 8)
 
 def menu():
     """
@@ -34,7 +36,7 @@ def menu():
 
         choice = input("Choose option: ")
         if choice == '1':
-            show_board(coordinates)
+            show_board(board)
             # def
         elif choice == '2':
             print("hello")
@@ -45,14 +47,12 @@ def menu():
             break
 
 #prints the board when user hits 1
-def show_board(coordinates):
-    print(" A B C D E F G H")
-    print(" O O O O O O O O")
+def show_board(board):
+    print("  A B C D E F G H")
     row_nr = 1
-    for row in coordinates:
+    for row in board:
         print("%d|%s|" % (row_nr, "|".join(row)))
         row_nr += 1 
 
-
-
+def 
 menu()
