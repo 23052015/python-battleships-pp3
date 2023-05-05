@@ -48,11 +48,41 @@ def menu():
 
 #prints the board when user hits 1
 def show_board(board):
-    print("  A B C D E F G H")
-    row_nr = 1
+    # print("  A B C D E F G H")
+    # row_nr = 1
     for row in board:
-        print("%d|%s|" % (row_nr, "|".join(row)))
-        row_nr += 1 
+        print("|".join(row))
+        # row_nr += 1 
 
-def 
+
+def create_ships(board, ship_len):
+    while True:
+        ship_row = randint(0, len(board) -1)
+        ship_col = randint(0, len(board) -1)
+        direction = randint(0, 1)
+
+        if direction == 0:
+            if ship_col > 8 - ship_len:
+                continue
+            for i in range(ship_len):
+                if board[ship_row][ship_col+i] != "O":
+                    continue
+            for i in range(ship_len):
+                board[ship_row][ship_col+i] != "S"
+            break
+
+        elif direction == 1:
+            if ship_col > 8 - ship_len:
+                continue
+            for i in range(ship_len):
+                if board[ship_row+i][ship_col] != "O":
+                    continue
+            for i in range(ship_len):
+                board[ship_row+i][ship_col] != "S"
+            break
+
+
+# def player_shot()
+
+
 menu()
