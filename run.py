@@ -30,6 +30,22 @@ player_hits = []
 computer_hits = []
 
 
+ "Here is how to play Python Battleship Game:
+
+The game is played on an 8x8 board.
+The player and the computer each have their own board.
+Each board has ships of different lengths hidden on it.
+The player must choose a row and a column separately to target the computer board.
+The computer board is hidden from the player, so they do nott know where the ships are.
+If the player hits a ship, the computer will notify them and mark the spot on the board with an X.
+If the player misses, the computer will notify them and mark the spot on the board with the letter O.
+The computer will randomly choose a row and a column to target the player board.
+If the computer hits a ship, the player will be notified and the spot on the board will be marked with the letter X.
+If the computer misses, the player will be notified and the spot on the board will be marked with the letter O.
+The game continues until all the ships on either board are sunk.
+The player with the most ships sunk at the end of the game is the winner.
+Have fun!"
+
 # prints the board when user hits 1
 def show_board(board):
     print("  A B C D E F G H")
@@ -52,6 +68,7 @@ def create_ships(board):
             if place_ship(board, ship_len, direction, row, column):
                 break
 
+                
 
 def place_ship(board, ship_len, direction, row, column):
     """
@@ -63,10 +80,10 @@ def place_ship(board, ship_len, direction, row, column):
             return False
         else:
             for i in range(column, column + ship_len):
-                if board[i][row] == "S":
+                if board[row][i] == "S":
                     return False
             for i in range(column, column + ship_len):
-                board[i][row] = "S"
+                board[row][i] = "S"
     else:
         if row + ship_len > 8:
             return False
@@ -77,10 +94,6 @@ def place_ship(board, ship_len, direction, row, column):
             for i in range(row, row + ship_len):
                 board[i][column] = "S"
     return True
-
-
-
-
 
 
 def player_shot(board, create_ships):
@@ -198,24 +211,23 @@ def start_game():
     # Display the players board
     print('Player board\n')
     show_board(PLAYER_BOARD)
-    # Players turn
     while True:
         # Players turn
-        print("Guess the ship coordinates\n")
-        # Show the computers current board
+        
+        #  computers current board
         print('Computers board\n')
         show_board(COMPUTER_BOARD)
-        # Carry out the players turn, targeting the computers board
+        print("Guess the enemy ships coordinates\n")
+        # Based on the player input targets the cells on computer board
         player_turn(COMPUTER_BOARD)
+        # randomly chooses a cell on the players board
         computer_turn(PLAYER_BOARD)
 
         if playerscore_count(COMPUTER_BOARD, player_hits) == 3:
             print("You sunk all their ships! You win!")
             return play_again()
 
-        # Computers turn
         print('Player board\n')
-        # Carry out the computers turn, targeting the players board
 
         # Show the players board
         show_board(PLAYER_BOARD)
@@ -234,7 +246,7 @@ def play_again():
     global COMPUTER_BOARD
     PLAYER_BOARD = [[" "] * 8 for i in range(8)]
     COMPUTER_BOARD = [[" "] * 8 for i in range(8)]
-    print("Would you like to play again?\n")
+    print("Do you wish to play again?\n")
     answer = input("Enter Y or N \n").upper()
     print(' ')
     while True:
@@ -253,31 +265,47 @@ def play_again():
 
 # if __name__ == "__main__":
     
-start_game()
 
 
-# def menu():
-#     """
-#     prints the main menu and shows options to choose
-#     """
-#     while True:
-#         print("1.New Game")
-#         print("2.Instructions")
-#         print("3.Credits")
 
-#         choice = input("Choose option: ")
-#         if choice == '1':
-#             show_board(board)
-#             create_ships(board, ship_len)
-#             player_shot(board, ship_len)
-#             # def
-#         elif choice == '2':
-#             print("hello")
-#             # def
-#         elif choice == '3':
-#             print("hello")
-#             # def
-#             break
+def menu():
+    """
+    prints the main menu and shows options to choose
+    """
+    while True:
+        print("1.New Game")
+        print("2.Instructions")
+        print("3.Credits")
+
+        choice = input("Choose option: ")
+        if choice == '1':
+            start_game()
+            # def
+        elif choice == '2':
+           print( """
+                    Here is how to play Python Battleship Game:
+
+                    The game is played on an 8x8 board.
+                    The player and the computer each have their own board.
+                    Each board has ships of different lengths hidden on it.
+                    The player must choose a row by selecting a number from 1-8 and a column selecting a letter from A-H
+                    separately to target the computer board.
+                    The computer board is hidden from the player, so they do not know where the ships are.
+                    The Ships on the players board are marked with the letter S. 
+                    If the player hits a ship, the game will notify them and mark the spot on the board with an X.
+                    If the player misses, the game will notify them and mark the spot on the board with the letter O.
+                    The computer will randomly choose a row and a column to target the player board.
+                    If the computer hits a ship, the player will be notified and the spot on the board will be marked with the letter X.
+                    If the computer misses, the player will be notified and the spot on the board will be marked with the letter O.
+                    The game continues until all the ships on either board are sunk.
+                    Have fun!
+                    """)
+            print("If you have read the instructions you can return to the main main or start the game directly?")
+            while True:
+        elif choice == '3':
+            print("hello")
+
+            break
 
 
-# menu()
+menu()
