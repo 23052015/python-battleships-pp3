@@ -212,13 +212,13 @@ def start_game():
         player_turn(COMPUTER_BOARD)
         # randomly chooses a cell on the players board
         computer_turn(PLAYER_BOARD)
-        if playerscore_count(COMPUTER_BOARD, player_hits) == 15:
+        if playerscore_count(COMPUTER_BOARD, player_hits) == 18:
             print("You sunk all their ships! You win!")
             return play_again()
         print('Player board\n')
         # Show the players board
         show_board(PLAYER_BOARD)
-        if computer_score_count(PLAYER_BOARD, computer_hits) == 15:
+        if computer_score_count(PLAYER_BOARD, computer_hits) == 18:
             print("They have sunk all your ships! You lose")
             return play_again()
 
