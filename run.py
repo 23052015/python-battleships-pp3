@@ -290,7 +290,7 @@ def menu():
                     If the computer misses, the player will be notified and
                     the spot on the board will be marked with the letter O.\n
                     The game continues until all the ships
-                    on either board are sunk(15 hits each board).\n
+                    on either board are sunk(18 hits each board).\n
                     Have fun!
                     \n""")
             while True:
@@ -332,7 +332,7 @@ def menu():
             print("We hope to see you soon")
             sys.exit()
         else:
-            print("Please enter a number from a number from 1-4\n")
+            print("Please enter number from 1-4\n")
 
 
 menu()
