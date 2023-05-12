@@ -171,7 +171,7 @@ def playerscore_count(board, player_hits):
             if column == "X":
                 score += 1
     player_hits.append(score)
-    print("Player score:", score)
+    print("Player score: ", score)
     return score
 
 
@@ -186,7 +186,7 @@ def computer_score_count(board, computer_hits):
             if column == "X":
                 score += 1
     computer_hits.append(score)
-    print("Computer score:", score)
+    print("Computer score: ", score)
     return score
 
 # This function was updated from
@@ -201,13 +201,13 @@ def start_game():
     create_ships(PLAYER_BOARD)
     create_ships(COMPUTER_BOARD)
     # Display the players board
-    print('Player board\n')
+    print('Player board')
     show_board(PLAYER_BOARD)
     while True:
         #  computers updated board
         print('Computers board\n')
         show_board(COMPUTER_BOARD)
-        print("Guess the enemy ships coordinates\n")
+        print("Guess the enemy ships coordinates")
         # Based on the player input targets the cells on computer board
         player_turn(COMPUTER_BOARD)
         # randomly chooses a cell on the players board
@@ -235,14 +235,14 @@ def play_again():
     global COMPUTER_BOARD
     PLAYER_BOARD = [[" "] * 8 for i in range(8)]
     COMPUTER_BOARD = [[" "] * 8 for i in range(8)]
-    print("Do you wish to play again?\n")
+    print("Do you wish to play again?")
     answer = input("Enter Y or N \n").upper()
     print(' ')
     while True:
         if answer == "Y":
             start_game()
         elif answer == "N":
-            print("Thank you for playing! See you next time!\n")
+            print("Thank you for playing! See you next time!")
             menu()
         else:
             print(' ')
@@ -255,13 +255,13 @@ def menu():
     prints the main menu and shows options to choose
     """
     while True:
-        print("Select an option by tyiping a number between 1-4")
+        print("Select an option by tyiping a number between 1-4\n")
         print("1.New Game")
         print("2.Instructions")
         print("3.Credits")
         print("4.Exit")
 
-        choice = input("Choose option: ")
+        choice = input("Choose option: \n")
         if choice == '1':
             start_game()
             # def
@@ -292,15 +292,15 @@ def menu():
                     The game continues until all the ships
                     on either board are sunk(15 hits each board).\n
                     Have fun!
-                    """)
+                    \n""")
             while True:
                 print("""
                         After reading the instructions you can return to the
-                        main menu or start the game directly\n
+                        main menu or start the game directly
                     """)
                 print("To start the game press G and enter!")
                 print("To return to main menu press B and enter!")
-                choice = input("New game or main menu: ").upper()
+                choice = input("New game or main menu: \n").upper()
                 if choice == "G":
                     start_game()
                 elif choice == "B":
@@ -309,9 +309,9 @@ def menu():
                     print("""
                         Please select G to start the
                         game or the letter B to return to main menu\n
-                        """)
+                        \n""")
         elif choice == '3':
-            print("Credits\n")
+            print("Credits")
             print("""
                  I want to express my gratitude to\n
                  https://copyassignment.com/battleship-game-code-in-python/ \n
@@ -321,10 +321,13 @@ def menu():
                  Code Institute Student Care\n
                  for ideas, help and solutions which wer actively used
                  and provided during the creation of this game\n""")
-            print("To return to the main menu press B")
-            choice = input("Back to main menu: ").upper()
-            if choice == "B":
-                menu()
+            while True:
+                print("To return to the main menu press B")
+                choice = input("Back to main menu: \n").upper()
+                if choice == "B":
+                    menu()
+                else:
+                    print("Please select B to return to the main menu\n")
         elif choice == "4":
             print("We hope to see you soon")
             sys.exit()
