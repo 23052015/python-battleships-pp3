@@ -255,7 +255,7 @@ def menu():
     prints the main menu and shows options to choose
     """
     while True:
-        print("Select an option by tyiping a number between 1-4\n")
+        print("Select an option by typing a number between 1-4\n")
         print("1.New Game")
         print("2.Instructions")
         print("3.Credits")
